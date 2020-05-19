@@ -1,0 +1,38 @@
+##
+## EPITECH PROJECT, 2018
+## Makefile
+## File description:
+## Makefile
+##
+
+RM	=	rm -f
+
+SRC	=	main.c
+
+CFLAGS	+=	-Wextra	-Wall -Werror
+
+CFLAGS	+=	-I./include
+
+LDFLAGS	=	-lcsfml-system		\
+	-lcsfml-window		\
+	-lcsfml-graphics	\
+	-lcsfml-audio		\
+
+OBJ	=	$(SRC:.c=.o)
+
+NAME_LIB	=	libmy.a
+
+NAME	=	my_runner
+
+$(NAME):	$(OBJ)
+	gcc $(OBJ) -o $(NAME) $(LDFLAGS)
+
+all	:	$(NAME)
+
+clean:
+	$(RM) $(OBJ)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: 	fclean all
